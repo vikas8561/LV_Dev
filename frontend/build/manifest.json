@@ -1,0 +1,23 @@
+{
+  "name": "Legacy Vogue - Premium E-commerce Management Platform",
+  "short_name": "Legacy Vogue",
+  "description": "Advanced admin and seller dashboards with real-time analytics, inventory management, and secure authentication for e-commerce businesses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}

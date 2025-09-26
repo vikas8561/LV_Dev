@@ -1,0 +1,37 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and seller dashboards from indexing
+Disallow: /admin-dashboard/
+Disallow: /seller-dashboard/
+Disallow: /api/
+
+# Allow important pages
+Allow: /
+Allow: /admin
+Allow: /seller
+
+# Sitemap location
+Sitemap: https://legacyvogue.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+Disallow: /admin-dashboard/
+Disallow: /seller-dashboard/
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin-dashboard/
+Disallow: /seller-dashboard/
+Disallow: /api/
+
+User-agent: Slurp
+Allow: /
+Disallow: /admin-dashboard/
+Disallow: /seller-dashboard/
+Disallow: /api/
