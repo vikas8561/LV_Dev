@@ -193,14 +193,8 @@ const Navbar = () => {
       {/* Desktop Navigation */}
       <nav className="hidden md:block bg-[#1A0A1A] text-white px-6 py-4 rounded-t-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Left Section - Logo and Brand */}
-          <div className="flex items-center space-x-3">
-            {/* Logo - Abstract interconnected shapes */}
-            <div className="flex items-center space-x-1">
-              <div className="w-6 h-6 bg-pink-500 rounded-full"></div>
-              <div className="w-4 h-4 bg-pink-500 rounded-full -ml-2"></div>
-              <div className="w-5 h-5 bg-pink-500 rounded-full -ml-1"></div>
-            </div>
+          {/* Left Section - Brand */}
+          <div className="flex items-center">
             {/* Brand Name */}
             <h1 className="text-xl font-semibold">
               <span className="font-bold">Legacy</span> <span className="font-normal">Vogue</span>
