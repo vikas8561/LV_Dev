@@ -4,13 +4,33 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState('Home');
+  const [activeLink, setActiveLink] = useState('');
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
   const mobileSearchButtonRef = useRef<HTMLButtonElement>(null);
   const desktopSearchButtonRef = useRef<HTMLButtonElement>(null);
   const isTogglingRef = useRef(false);
+
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Sarees', href: '/sarees' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Contact Us', href: '/contact' },
+  ];
+
+  // Set active link based on current path
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const currentLink = navLinks.find(link => link.href === currentPath);
+    if (currentLink) {
+      setActiveLink(currentLink.name);
+    } else if (currentPath === '/') {
+      setActiveLink('Home');
+    } else {
+      setActiveLink('');
+    }
+  }, []);
 
   // Handle search expansion
   const handleSearchClick = (e: React.MouseEvent) => {
@@ -86,13 +106,6 @@ const Navbar = () => {
       document.removeEventListener('keydown', handleEscapeKey);
     };
   }, [isSearchExpanded]);
-
-  const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Sarees', href: '/sarees' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Contact Us', href: '/contact' },
-  ];
 
   const mobileNavItems = [
     { 
