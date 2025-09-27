@@ -148,11 +148,15 @@ const Navbar = () => {
       <header className="md:hidden sticky top-0 bg-[#1A0A1A] text-white px-4 py-4 border-b border-gray-800 z-40">
         <div className="flex items-center justify-between">
           {/* Company Name */}
-          <h1 className={`text-lg font-semibold transition-all duration-300 ease-out ${
-            isSearchExpanded ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto'
-          }`}>
+          <Link 
+            href="/" 
+            onClick={() => setActiveLink('Home')}
+            className={`text-lg font-semibold transition-all duration-300 ease-out cursor-pointer ${
+              isSearchExpanded ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto'
+            }`}
+          >
             <span className="font-bold">Legacy</span> <span className="font-bold">Vogue</span>
-          </h1>
+          </Link>
           
           {/* Search Container */}
           <div className="flex items-center">
@@ -178,7 +182,7 @@ const Navbar = () => {
             <button 
               ref={mobileSearchButtonRef}
               onClick={handleSearchClick}
-              className={`text-white hover:text-pink-400 transition-all duration-300 ${
+              className={`text-white hover:text-pink-400 transition-all duration-300 cursor-pointer ${
                 isSearchExpanded ? 'transform rotate-90' : 'transform rotate-0'
               }`}
             >
@@ -196,9 +200,13 @@ const Navbar = () => {
           {/* Left Section - Brand */}
           <div className="flex items-center">
             {/* Brand Name */}
-            <h1 className="text-xl font-semibold">
+            <Link 
+              href="/" 
+              onClick={() => setActiveLink('Home')}
+              className="text-xl font-semibold cursor-pointer"
+            >
               <span className="font-bold">Legacy</span> <span className="font-normal">Vogue</span>
-            </h1>
+            </Link>
           </div>
 
           {/* Center Section - Navigation Links */}
@@ -208,7 +216,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setActiveLink(link.name)}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-pink-400 ${
+                className={`text-sm font-medium transition-colors duration-200 hover:text-pink-400 cursor-pointer ${
                   activeLink === link.name
                     ? 'text-pink-500'
                     : 'text-white'
@@ -247,7 +255,7 @@ const Navbar = () => {
                 <button 
                   ref={desktopSearchButtonRef}
                   onClick={handleSearchClick}
-                  className={`text-white hover:text-pink-400 transition-all duration-300 ${
+                  className={`text-white hover:text-pink-400 transition-all duration-300 cursor-pointer ${
                     isSearchExpanded ? 'transform rotate-90' : 'transform rotate-0'
                   }`}
                 >
@@ -258,14 +266,14 @@ const Navbar = () => {
               </div>
               
               {/* Heart Icon */}
-              <button className="text-white hover:text-pink-400 transition-colors duration-200">
+              <button className="text-white hover:text-pink-400 transition-colors duration-200 cursor-pointer">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </button>
               
               {/* Shopping Bag Icon */}
-              <button className="text-white hover:text-pink-400 transition-colors duration-200">
+              <button className="text-white hover:text-pink-400 transition-colors duration-200 cursor-pointer">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
@@ -275,12 +283,12 @@ const Navbar = () => {
             {/* Buttons */}
             <div className="flex items-center space-x-3">
               {/* Login Button */}
-              <button className="px-4 py-2 text-sm font-medium text-white bg-transparent border border-gray-600 rounded-md hover:bg-gray-800 transition-colors duration-200">
+              <button className="px-4 py-2 text-sm font-medium text-white bg-transparent border border-gray-600 rounded-md hover:bg-gray-800 transition-colors duration-200 cursor-pointer">
                 Login
               </button>
               
               {/* Sign Up Button */}
-              <button className="px-4 py-2 text-sm font-medium text-white bg-pink-500 rounded-md hover:bg-pink-600 transition-colors duration-200">
+              <button className="px-4 py-2 text-sm font-medium text-white bg-pink-500 rounded-md hover:bg-pink-600 transition-colors duration-200 cursor-pointer">
                 Sign Up
               </button>
             </div>
@@ -301,7 +309,7 @@ const Navbar = () => {
                 key={item.name}
                 href={item.href}
                 onClick={() => setActiveLink(item.name)}
-                className="flex flex-col items-center justify-center py-2 px-3 min-w-0 flex-1"
+                className="flex flex-col items-center justify-center py-2 px-3 min-w-0 flex-1 cursor-pointer"
               >
                 <div className={`${isActive ? 'text-pink-500' : 'text-white'} transition-colors duration-200`}>
                   {item.icon(isActive)}
