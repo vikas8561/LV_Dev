@@ -148,18 +148,18 @@ const Navbar = () => {
       <header className="md:hidden bg-[#1A0A1A] text-white px-4 py-4 border-b border-gray-800">
         <div className="flex items-center justify-between">
           {/* Company Name */}
-          <h1 className={`text-lg font-semibold transition-all duration-300 ${
-            isSearchExpanded ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100'
+          <h1 className={`text-lg font-semibold transition-all duration-300 ease-out ${
+            isSearchExpanded ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto'
           }`}>
             <span className="font-bold">Legacy</span> <span className="font-bold">Vogue</span>
           </h1>
           
           {/* Search Container */}
           <div className="flex items-center">
-            {/* Search Input Container */}
-            <div className={`relative overflow-hidden transition-all duration-300 ease-in-out ${
-              isSearchExpanded ? 'w-48 mr-2' : 'w-0 mr-0'
-            }`}>
+             {/* Search Input Container */}
+             <div className={`relative overflow-hidden transition-all duration-300 ease-out ${
+               isSearchExpanded ? 'w-full mr-2' : 'w-0 mr-0'
+             }`}>
               <form onSubmit={handleSearchSubmit} className="relative">
                 <input
                   ref={searchInputRef}
@@ -167,7 +167,7 @@ const Navbar = () => {
                   value={searchQuery}
                   onChange={handleSearchChange}
                   placeholder="Search products..."
-                  className={`w-full px-4 py-2 bg-white text-gray-900 rounded-lg shadow-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 ${
+                  className={`w-full px-4 py-2 bg-white text-gray-900 rounded-lg shadow-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 ease-out ${
                     isSearchExpanded ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
