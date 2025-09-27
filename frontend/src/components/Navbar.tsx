@@ -268,7 +268,7 @@ const Navbar = () => {
       )}
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:block bg-[#1A0A1A] text-white px-6 py-4 rounded-t-lg">
+      <nav className="hidden md:block sticky top-0 bg-[#1A0A1A] text-white px-6 py-4 rounded-t-lg z-40">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Left Section - Brand */}
           <div className="flex items-center">
@@ -373,8 +373,8 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#1A0A1A] border-t border-gray-800 z-50 transform-none will-change-auto">
-        <div className="flex items-center justify-around py-2">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#1A0A1A] border-t border-gray-800 z-50 transform-none will-change-auto min-h-fit pb-safe" style={{bottom: '0px'}}>
+        <div className="flex items-center justify-around py-2 px-safe">
           {mobileNavItems.map((item) => {
             const isActive = activeLink === item.name;
             return (
