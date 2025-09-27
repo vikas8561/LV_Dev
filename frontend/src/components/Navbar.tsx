@@ -6,6 +6,7 @@ import Link from 'next/link';
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState('');
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
   const mobileSearchButtonRef = useRef<HTMLButtonElement>(null);
@@ -15,8 +16,8 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Sarees', href: '/sarees' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Contact Us', href: '/contact' },
+    { name: 'New Arrival', href: '/new-arrival' },
+    { name: 'Festive Wear', href: '/festive-wear' },
   ];
 
   // Set active link based on current path
@@ -31,6 +32,11 @@ const Navbar = () => {
       setActiveLink('');
     }
   }, []);
+
+  // Handle mobile menu toggle
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   // Handle search expansion
   const handleSearchClick = (e: React.MouseEvent) => {
@@ -160,6 +166,16 @@ const Navbar = () => {
       {/* Mobile Header */}
       <header className="md:hidden sticky top-0 bg-[#1A0A1A] text-white px-4 py-4 border-b border-gray-800 z-40">
         <div className="flex items-center justify-between">
+          {/* Hamburger Menu */}
+          <button 
+            onClick={handleMobileMenuToggle}
+            className="text-white hover:text-pink-400 transition-colors duration-200 cursor-pointer"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
           {/* Company Name */}
           <Link 
             href="/" 
@@ -206,6 +222,50 @@ const Navbar = () => {
           </div>
         </div>
       </header>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+          <div className="bg-[#1A0A1A] w-full max-w-sm h-full shadow-lg">
+            <div className="p-6">
+              {/* Menu Header */}
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-xl font-semibold text-white">
+                  <span className="font-bold">Legacy</span> <span className="font-bold">Vogue</span>
+                </h2>
+                <button 
+                  onClick={handleMobileMenuToggle}
+                  className="text-white hover:text-pink-400 transition-colors duration-200 cursor-pointer"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Categories */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-pink-400 mb-4">Categories</h3>
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => {
+                      setActiveLink(link.name);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`block py-3 px-4 text-white hover:text-pink-400 hover:bg-gray-800 rounded-lg transition-colors duration-200 cursor-pointer ${
+                      activeLink === link.name ? 'text-pink-500 bg-gray-800' : ''
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Desktop Navigation */}
       <nav className="hidden md:block bg-[#1A0A1A] text-white px-6 py-4 rounded-t-lg">
